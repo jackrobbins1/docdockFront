@@ -2,9 +2,35 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>DocDock Create Account</title>
+    <link rel="stylesheet" href="style/create-user.css">
   </head>
   <body>
+    <h2>Create Account</h2>
 
+    <form action="/action_page.php">
+      <div class="imgcontainer">
+        <img src="assets/pictures/dockgoose2.jpg" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Name</b></label>
+        <input id="name-input" type="text" placeholder="Enter Username" required>
+
+        <label for="psw"><b>Email</b></label>
+        <input id="email-input" type="text" placeholder="Enter Email" required>
+
+        <button id="submit-btn" type="submit">Create Account</button>
+        <!-- <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label> -->
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn">Cancel</button>
+        <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+      </div>
+    </form>
+    <script src="src/create-user.js" charset="utf-8" defer></script>
   </body>
 </html>
