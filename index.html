@@ -45,6 +45,45 @@
 </div>
 
 
+    <title></title>
+    <link rel="stylesheet" href="style/docdock.css">
+  </head>
+  <body>
+    <!-- Login section start -->
+    <div id="login-container" class="showDiv">
+      <h2>Login</h2>
 
+      <form action="/action_page.php">
+        <div class="imgcontainer">
+          <img src="assets/pictures/dockgoose2.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+          <label for="uname"><b>Name</b></label>
+          <input id="name-input" type="text" placeholder="Enter Username" required>
+
+          <label for="psw"><b>Email</b></label>
+          <input id="email-input" type="text" placeholder="Enter Email" required>
+
+          <button id="loginButton" type="submit">Login</button>
+          <!-- <label>
+            <input type="checkbox" checked="checked" name="remember"> Remember me
+          </label> -->
+        </div>
+
+        <!-- <div class="container" style="background-color:#f1f1f1">
+          <button type="button" class="cancelbtn">Cancel</button>
+          <span class="psw">Forgot <a href="#">password?</a></span>
+        </div> -->
+      </form>
+    </div>
+    <!-- Login section end -->
+
+    <!-- User homepage start -->
+    <div class="home-container" class="hideDiv">
+
+    </div>
+    <!-- User homepage end -->
+    <script src="src/index.js" charset="utf-8" defer></script>
   </body>
 </html>
