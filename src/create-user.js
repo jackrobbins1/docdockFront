@@ -36,8 +36,21 @@ let fetchCreateUser = () => {
   // fetch("http://localhost3000/api/v1/users", configObj())
   fetch('http://localhost:3000/api/v1/users', configObj)
     .then(response => response.json())
-    .then(data => console.log("successfully created user", data))
+    .then(data => {
+      console.log("successfully created user", data)
+      resetInputs()
+      redirectToLogin()
+    })
     .catch(error => console.log(error.message))
+}
 
+// Helper methods
 
+let resetInputs = () => {
+  nameInput.value = ""
+  emailInput.value = ""
+}
+
+let redirectToLogin = () => {
+  window.location.replace("http://localhost:4000/index.html");
 }
