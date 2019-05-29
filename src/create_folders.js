@@ -1,15 +1,16 @@
 const createBtn = document.getElementById("new-folder-btn")
 const newNameInput = document.getElementById("new-folder-name")
 const newPicInput = document.getElementById("new-folder-pic")
-const newfolderDesc  = document.getElementById("new-folder-desc")
+const newFolderDesc  = document.getElementById("new-folder-desc")
 const newFolderContainer = document.getElementById("folder-container")
 const folderList = document.getElementById("folder-list")
+const createFolderForm = document.getElementById("new-folder-form")
 
 let allFolders = []
 
 // Add event listener on create button
 
-// createBtn.addEventListener('submit', postFolder)
+createFolderForm.addEventListener('submit', postFolder)
 
 
 //////////add folders to dom///////////
@@ -44,6 +45,8 @@ function addFoldersDataToDiv(folder) {
   let deleteBtn = document.createElement("button")
       deleteBtn.setAttribute("id", "delete-btn")
 
+      //////////add event listener to delete btn//////
+      deleteBtn.addEventListener("click", event => deleteFolder(folder, event))
 
   title.innerHTML = folder.name
   star.innerHTML = folder.star
@@ -53,46 +56,54 @@ function addFoldersDataToDiv(folder) {
   deleteBtn.innerHTML = "Delete Folder"
 
   // title.appendChild(star)
-  li.append(title, star, image, description, editBtn, deleteBtn)
-
-  return li
+  li.append(title, image, description, editBtn, deleteBtn, star)
+  folderList.appendChild(li)
+  return folderList
 }
 
 
+/////////////// delete folder//////////////
+
+
+function deleteFolder(folder, event) {
+  event.preventDefault();
+  // console.log(event)
+  fetch('http://localhost:3000/api/v1/folders/' + folder.id, {
+    method: "DELETE"
+  })
+  event.target.parentElement.remove()
+}
+
 
 //
-// function postFolder() {
-//   event.preventDefault();
-//   console.log(event)
-// }
-//
-// let fetchCreateFolder = () => {
-//   let folderName = newNameInput.value
-//   let folderPic = newPicInput.value
-//   let folderDesc = newfolderDesc.value
-//
-//   let createFolderData = {
-//     name: folderName,
-//     picture: folderPic,
-//     description: folderDesc
-//   }
-//
-//   let configObj = {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         "Accept": "application/json"
-//       },
-//       body: JSON.stringify(createFolderData)
-//     }
-//
-//
-//   // fetch("http://localhost3000/api/v1/folders", configObj())
-//   fetch('http://localhost:3000/api/v1/folders', configObj)
-//     .then(response => response.json())
-//     .then(data => {
-//       console.log("successfully created folder", data)
-//     })
-//     .catch(error => console.log(error.message))
-// }
+function postFolder() {
+  event.preventDefault();
+  console.log(event)
+
+  let folderName = newNameInput.value
+  let folderPic = newPicInput.value
+  let folderDesc = newFolderDesc.value
+  fetch('http://localhost:3000/api/v1/folders', {
+    method: "POST",
+    headers: {
+     "Content-Type": "application/json",
+     "Accept": "application/json"
+   },
+   body: JSON.stringify ({
+     name: folderName,
+     picture: folderPic,
+     description: folderDesc,
+     star: false
+   })
+  })
+  .then(resp => resp.json())
+  .then(folderData => {
+    allFolders.push(folderData)
+    folderList.innerHTML = ""
+    addDivToDom(allFolders)
+  })
+  event.target.reset()
+}
+
   loadFolders();
+  
