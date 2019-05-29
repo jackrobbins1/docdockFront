@@ -5,6 +5,9 @@
     <title>Homepage</title>
   </head>
   <body>
+
+                        <!-- folder divs -->
+
    <h3>Your Folders</h3>
 
    <div class="card" id= "folder-container">
@@ -16,7 +19,7 @@
 
 
   <h4>Add a New Folder</h4>
-<div id="folder">
+<div id="new-folder">
 
   <form action="">
     <!-- <div class="imgcontainer">
@@ -27,22 +30,23 @@
       <label  for="new-folder-name"><b>Folder Name</b></label><br>
       <input id="new-folder-name" type="text" placeholder="Folder Name" name="new-folder-name" required><br><br>
 
-      <label id ="new-folder-pic" for="new-folder-pic"><b>Folder Picture</b></label><br>
-      <input type="text" placeholder="Folder Picture" name="new-folder-pic" ><br><br>
+      <label for="new-folder-pic"><b>Folder Picture</b></label><br>
+      <input id ="new-folder-pic" type="text" placeholder="Folder Picture" name="new-folder-pic" ><br><br>
 
-      <label id ="new-folder-desc" for="new-folder-desc"><b>Folder Description</b></label><br>
-      <input type="text" placeholder="Folder Description" name="new-folder-desc" ><br><br>
+      <label for="new-folder-desc"><b>Folder Description</b></label><br>
+      <input id ="new-folder-desc" type="text" placeholder="Folder Description" name="new-folder-desc" ><br><br>
 
 
-      <button id="new-folder" type="submit">Create Folder</button>
+      <button id="new-folder-btn" type="submit">Create Folder</button>
     </div>
 
     <!-- <div class="container" style="background-color:#f1f1f1">
       <button type="button" class="cancelbtn">Cancel</button>
-      <!-- <span class="psw">Forgot <a href="#">password?</a></span> -->
+      <!- <span class="psw">Forgot <a href="#">password?</a></span> -->
     <!-- </div> -->
   </form>
 </div>
+                <!--- end of folders div --------->
 
 
     <title></title>
@@ -85,5 +89,6 @@
     </div>
     <!-- User homepage end -->
     <script src="src/index.js" charset="utf-8" defer></script>
+    <script src="src/create_folders.js" charset="utf-8" defer></script>
   </body>
 </html>
