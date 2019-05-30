@@ -9,6 +9,7 @@ function folderFetch (id) {
     .then(data => {
       console.log(data)
       showOneContainer(folderContain)
+      currentFolder = data.folder.id
       renderFolderPage(data)
     })
     .catch(error => console.log(error.message))
@@ -65,6 +66,7 @@ function docFetch (id) {
     .then(data => {
       console.log(data)
       showOneContainer(docContain)
+      currentDoc = data.id
       renderDocPage(data)
     })
     .catch(error => console.log(error.message))
