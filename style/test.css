@@ -1,0 +1,9 @@
+.image-container {
+  width: 100%;
+}
+
+.folder-image {
+  display: block;
+  width: 150px;
+  margin: 0 auto;
+}
