@@ -1,3 +1,9 @@
+// state storing variables
+let currentUser = -1
+let currentFolder = -1
+let currentDoc = -1
+// end state storing variables
+
 const loginBtn = document.getElementById("loginButton")
 const nameInput = document.getElementById("name-input")
 const emailInput = document.getElementById("email-input")
@@ -70,15 +76,18 @@ let fetchLoginUser = () => {
       if (loggedUser) {
         console.log("successfully logged in")
         showOneContainer(homeContain)
-        fetchSingleUser(loggedUser)
+        nameInput.value = ""
+        emailInput.value = ""
+        currentUser = loggedUser.id
+        fetchSingleUser(loggedUser.id)
       }
     })
     .catch(error => console.log(error.message))
 }
 
 // Create fetch method that gets data for 1 user
-let fetchSingleUser = userObject => {
-  let id = userObject.id
+let fetchSingleUser = userID => {
+  let id = userID
   fetch(`http://localhost:3000/api/v1/users/${id}`)
     .then(response => response.json())
     .then(data => {

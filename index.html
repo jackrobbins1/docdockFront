@@ -40,7 +40,7 @@
     <!-- User homepage start -->
     <div id="home-container" class="hideDiv">
       <h2 id="home-header"></h2>
-
+      <button id="logoutBtn" type="button" class="btn btn-secondary">Sign Out</button>
       <div id="user-folders">
 
       </div>
@@ -51,6 +51,10 @@
     <div id="folder-container" class="hideDiv">
       <h2 id="folder-header"></h2>
 
+      <button id="backHomeBtn" type="button" class="btn btn-secondary">
+        Back: home
+      </button>
+
       <div id="folder-docs">
 
       </div>
@@ -60,7 +64,10 @@
     <!-- Doc page -->
     <div id="doc-container" class="hideDiv">
       <h2 id="doc-header"></h2>
-      <img src="assets/pictures/Filetype-Docs-icon.png" alt="">
+      <button id="backFolderBtn" type="button" class="btn btn-secondary">
+        Back: folder
+      </button>
+      <img class="folder-image" src="assets/pictures/Filetype-Docs-icon.png" alt="">
       <a id="button-to-site" href="${doc.site_url}" class="btn btn-secondary">Go to site</a>
       <h3>Notes</h3>
       <div id="doc-notes" class="">
@@ -72,10 +79,10 @@
       </div>
     </div>
     <!-- Doc page end -->
-
-  
+    <!-- <script src="src/create_folders.js" charset="utf-8" defer></script> -->
     <script src="src/index.js" charset="utf-8" defer></script>
     <script src="src/folder.js" charset="utf-8" defer></script>
+    <script src="src/back-btn.js" charset="utf-8" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" defer></script>
