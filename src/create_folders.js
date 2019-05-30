@@ -41,6 +41,7 @@ function addFoldersDataToDiv(folder) {
 
   let editBtn = document.createElement("button")
       editBtn.setAttribute("id", "edit-btn")
+      editBtn.addEventListener("click", event => console.log(event))
 
   let deleteBtn = document.createElement("button")
       deleteBtn.setAttribute("id", "delete-btn")
@@ -105,5 +106,8 @@ function postFolder() {
   event.target.reset()
 }
 
+/////////////update folder////////////
+
+
+
   loadFolders();
-  
