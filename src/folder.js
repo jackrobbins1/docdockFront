@@ -77,4 +77,13 @@ function docFetch (id) {
   function renderDocPage (docData) {
     docHeader.innerText = docData.name
     docNotes.innerText = docData.notes
+
+    // Edit form fill inputs with values to edit
+
+     editNameDoc.value = docData.name
+     editPicDoc.value = docData.picture_url
+     editGistsDoc.value = docData.gists
+     editUrlDoc.value = docData.site_url
+     editNoteDoc.value = docData.notes
+
   }

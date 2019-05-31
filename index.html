@@ -127,7 +127,35 @@
       <div id="doc-gists" class="">
 
       </div>
-      <button type="button" class="btn btn-secondary">Edit</button>
+
+      <h4>Edit This Doc</h4>
+
+      <div id="edit-doc">
+
+        <form id="edit-doc-form">
+
+          <div class="container">
+            <label  for="edit-doc-name"><b>Doc Name</b></label><br>
+            <input id="edit-doc-name" type="text" placeholder="Doc Name" name="new-doc-name" required><br><br>
+
+            <label for="edit-doc-pic"><b>Doc Picture</b></label><br>
+            <input id ="edit-doc-pic" type="text" placeholder="Doc Picture" name="new-doc-pic" ><br><br>
+
+            <label for="edit-doc-gists"><b>Doc Gists</b></label><br>
+            <input id ="edit-doc-gists" type="text" placeholder="Doc Gists" name="new-doc-gists" ><br><br>
+
+            <label for="edit-doc-url"><b>Doc URL</b></label><br>
+            <input id ="edit-doc-url" type="text" placeholder="Doc URL" name="new-doc-url" ><br><br>
+
+            <label for="edit-doc-note"><b>Edit Notes On the Doc</b></label><br>
+            <input id ="edit-doc-note" type="text" placeholder="Doc Notes" name="new-doc-note" ><br><br>
+
+            <button id="edit-doc-btn" class="btn btn-secondary" type="submit">Edit Doc</button>
+          </div>
+
+        </form>
+      </div>
+
       <button id="deleteDocBtn" type="button" class="btn btn-danger">Delete</button>
     </div>
     <!-- Doc page end -->
