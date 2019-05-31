@@ -12,6 +12,16 @@
   margin: 0 auto;
 }
 
+.btnCreateContainer {
+  width: 100%;
+}
+
+.createAccountBtn {
+  width: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
 /* !!!!! Styling for login */
 body {font-family: Arial, Helvetica, sans-serif;}
 form {border: 3px solid #f1f1f1;}
@@ -42,7 +52,7 @@ button:hover {
 .cancelbtn {
   width: auto;
   padding: 10px 18px;
-  background-color: #f44336;
+  /* background-color: #f44336; */
 }
 
 .imgcontainer {

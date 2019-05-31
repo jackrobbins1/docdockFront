@@ -42,6 +42,7 @@ function renderFolderDocs (fData) {
         <p class="card-text">${doc.notes}</p>
         <a class="btn btn-primary">Notes</a>
         <a href="${doc.site_url}" class="btn btn-secondary">Go to site</a>
+        <button type="button" class="btn btn-danger">Delete</button>
       </div>
     </div>
     `

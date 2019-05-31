@@ -1,12 +1,12 @@
 const createDocBtn = document.getElementById("new-doc-btn")
-const newNameDoc = document.getElementById("new-doc-name")
-const newPicDoc = document.getElementById("new-doc-pic")
-const newGistsDoc = document.getElementById("new-doc-gists")
-const newUrlDoc = document.getElementById("new-doc-url")
-const newNoteDoc  = document.getElementById("new-doc-note")
+// const newNameDoc = document.getElementById("new-doc-name")
+// const newPicDoc = document.getElementById("new-doc-pic")
+// const newGistsDoc = document.getElementById("new-doc-gists")
+// const newUrlDoc = document.getElementById("new-doc-url")
+// const newNoteDoc  = document.getElementById("new-doc-note")
 const newDocContainer = document.getElementById("doc-container")
 const docList = document.getElementById("doc-list")
-const createDocForm = document.getElementById("new-doc-form")
+// const createDocForm = document.getElementById("new-doc-form")
 
 let allDocs = []
 
@@ -93,6 +93,7 @@ function postDoc() {
   let docPic = newPicDoc.value
   let docNote = newNoteDoc.value
   let docGists = newGistsDoc.value
+  let parentFolderId = currentFolder
   fetch('http://localhost:3000/api/v1/docs', {
     method: "POST",
     headers: {
@@ -105,14 +106,17 @@ function postDoc() {
      picture_url: docPic,
      note: docNote,
      gists: docGists,
-     star: false
+     star: false,
+     folder_id: parentFolderId
    })
   })
   .then(resp => resp.json())
   .then(docData => {
-    allDocs.push(docData)
-    docList.innerHTML = ""
-    addDocDivToDom(allDocs)
+    console.log(docData)
+    // allDocs.push(docData)
+    // docList.innerHTML = ""
+    // addDocDivToDom(allDocs)
+    folderFetch(currentFolder)
   })
   event.target.reset()
 }

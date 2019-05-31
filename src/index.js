@@ -150,6 +150,8 @@ let renderFolderHTML = data => {
         <h5 class="card-title">${folder.name}</h5>
         <p class="card-text">${folder.description}</p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
+        <button type="button" class="btn btn-secondary">Edit</button>
+        <button type="button" class="btn btn-danger">Delete</button>
       </div>
     </div>
     `

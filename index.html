@@ -24,6 +24,9 @@
           <input id="email-input" type="text" placeholder="Enter Email" required>
 
           <button id="loginButton" type="submit">Login</button>
+          <div class="btnCreateContainer">
+            <a class="btn btn-secondary createAccountBtn" href="http://localhost:4000/create-user.html">Create Account</a>
+          </div>
           <!-- <label>
             <input type="checkbox" checked="checked" name="remember"> Remember me
           </label> -->
@@ -44,6 +47,26 @@
       <div id="user-folders">
 
       </div>
+
+      <h4>Add a New Folder</h4>
+
+      <div id="new-folder">
+        <form id="new-folder-form">
+          <div class="container">
+            <label  for="new-folder-name"><b>Folder Name</b></label><br>
+            <input id="new-folder-name" type="text" placeholder="Folder Name" name="new-folder-name" required><br><br>
+
+            <label for="new-folder-pic"><b>Folder Picture</b></label><br>
+            <input id ="new-folder-pic" type="text" placeholder="Folder Picture" name="new-folder-pic" ><br><br>
+
+            <label for="new-folder-desc"><b>Folder Description</b></label><br>
+            <input id ="new-folder-desc" type="text" placeholder="Folder Description" name="new-folder-desc" ><br><br>
+
+            <button id="new-folder-btn" type="submit">Create Folder</button>
+          </div>
+
+        </form>
+      </div>
     </div>
     <!-- User homepage end -->
 
@@ -52,11 +75,38 @@
       <h2 id="folder-header"></h2>
 
       <button id="backHomeBtn" type="button" class="btn btn-secondary">
-        Back: home
+        <i class="fas fa-arrow-left"></i> home
       </button>
 
       <div id="folder-docs">
 
+      </div>
+
+      <h4>Add a New DOC</h4>
+
+      <div id="new-doc">
+        <form id="new-doc-form">
+
+          <div class="container">
+            <label  for="new-doc-name"><b>Doc Name</b></label><br>
+            <input id="new-doc-name" type="text" placeholder="Doc Name" name="new-doc-name" required><br><br>
+
+            <label for="new-doc-pic"><b>Doc Picture</b></label><br>
+            <input id ="new-doc-pic" type="text" placeholder="Doc Picture" name="new-doc-pic" ><br><br>
+
+            <label for="new-doc-gists"><b>Doc Gists</b></label><br>
+            <input id ="new-doc-gists" type="text" placeholder="Doc Gists" name="new-doc-gists" ><br><br>
+
+            <label for="new-doc-url"><b>Doc URL</b></label><br>
+            <input id ="new-doc-url" type="text" placeholder="Doc URL" name="new-doc-url" ><br><br>
+
+            <label for="new-doc-note"><b>Personal Notes On the Doc</b></label><br>
+            <input id ="new-doc-note" type="text" placeholder="Doc Notes" name="new-doc-note" ><br><br>
+
+
+            <button id="new-doc-btn" type="submit">Create Doc</button>
+          </div>
+        </form>
       </div>
     </div>
     <!-- Folder page end -->
@@ -65,7 +115,7 @@
     <div id="doc-container" class="hideDiv">
       <h2 id="doc-header"></h2>
       <button id="backFolderBtn" type="button" class="btn btn-secondary">
-        Back: folder
+        <i class="fas fa-arrow-left"></i> folder
       </button>
       <img class="folder-image" src="assets/pictures/Filetype-Docs-icon.png" alt="">
       <a id="button-to-site" href="${doc.site_url}" class="btn btn-secondary">Go to site</a>
@@ -77,14 +127,19 @@
       <div id="doc-gists" class="">
 
       </div>
+      <button type="button" class="btn btn-secondary">Edit</button>
+      <button id="deleteDocBtn" type="button" class="btn btn-danger">Delete</button>
     </div>
     <!-- Doc page end -->
     <!-- <script src="src/create_folders.js" charset="utf-8" defer></script> -->
     <script src="src/index.js" charset="utf-8" defer></script>
     <script src="src/folder.js" charset="utf-8" defer></script>
     <script src="src/back-btn.js" charset="utf-8" defer></script>
+    <script src="src/crud-folder.js" charset="utf-8" defer></script>
+    <script src="src/crud-doc.js" charset="utf-8" defer></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" defer></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
   </body>
 </html>
