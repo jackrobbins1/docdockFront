@@ -28,6 +28,22 @@ newFolderContainer.addEventListener("click", e => {
       createFolderForm.querySelector("#new-folder-btn").innerHTML = "Edit"
       createFolderForm.dataset.action = "edit"
 
+//////////// adding event listener on the form////////////
+      createFolderForm.addEventListener('submit', e => {
+        event.preventDefault();
+        console.log(e)
+        ////////////// if data-action === ""create => then method "post"///////////
+          if (e.target.dataset.action === "create")
+            postFolder()
+
+///////////// edit folder///////////////
+          else if (e.target.dataset.action === "edit") {
+            console.log(e)
+            editFolder(clickedFolderId)
+
+          }
+        })
+
     })
   }
 })
@@ -35,44 +51,7 @@ newFolderContainer.addEventListener("click", e => {
 
 /////////////add event listener on the form, switching between create and edit/////////
 
-createFolderForm.addEventListener('submit', e => {
-  event.preventDefault();
-  console.log(e)
-  ////////////// if data-action === ""create => then method "post"///////////
-    if (e.target.dataset.action === "create")
-      postFolder()
 
-
-    else if (e.target.dataset.action === "edit") {
-console.log(e)
-        let folderName = newNameInput.value
-        let folderPic = newPicInput.value
-        let folderDesc = newFolderDesc.value
-
-       fetch(`http://localhost:3000/api/v1/folders/`, {
-         method: "PATCH",
-         headers: {
-           'Content-Type': 'application/json',
-           'Accept': 'application/json'
-         },
-         body: JSON.stringify({
-           name: folderName.value,
-           picture: folderPic.value,
-           description: folderDesc.value
-         })
-       })
-       .then(resp => resp.json())
-       .then(folderData => {
-         allFolders.push(folderData)
-         folderList.innerHTML = ""
-         addDivToDom(allFolders)
-         ///////reset the form back to "post" mode///////
-         e.target.dataset.action = "create"
-
-         createFolderForm.querySelector("#new-folder-btn").innerHTML = "Create Folder"
-       })
-  }
-})
 
 
 //////////add folders to dom///////////
@@ -86,6 +65,11 @@ function loadFolders() {
 }
 
 function addDivToDom(array) {
+  //////////if ul has chidren remove them first//////////
+  if (folderList.childElementCount) {
+    folderList.innerHTML = ""
+  }
+  ///////// and re-append the data to the dom /////////
   array.forEach(folder => {
     newFolderList = addFoldersDataToDiv(folder)
     newFolderContainer.appendChild(newFolderList)
@@ -139,7 +123,7 @@ function deleteFolder(folder, event) {
   // console.log(event)
   fetch('http://localhost:3000/api/v1/folders/' + folder.id, {
     method: "DELETE"
-  })
+  }).then(res => res.json())
   event.target.parentElement.remove()
 }
 
@@ -176,8 +160,28 @@ function postFolder(folder) {
 
 /////////////    update/edit folder       ////////////
 
-function editFolder(folder, event) {
+function editFolder(id) {
+  console.log(event)
+  // let id = event.target
+  console.log(id)
+  let folderName = newNameInput.value
+  let folderPic = newPicInput.value
+  let folderDesc = newFolderDesc.value
 
+   fetch(`http://localhost:3000/api/v1/folders/${id}`, {
+     method:"PATCH",
+     headers: {
+       'Content-Type': 'application/json',
+       'Accept': 'application/json'
+     },
+     body: JSON.stringify({
+       name: folderName,
+       picture: folderPic,
+       description: folderDesc
+     })
+   })
+   .then( res => res.json())
+   .then(res => loadFolders())
 }
 
 

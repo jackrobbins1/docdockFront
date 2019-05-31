@@ -14,6 +14,44 @@ let allDocs = []
 
 createDocForm.addEventListener('submit', postDoc)
 
+// newDocContainer.addEventListener("click", e => {
+//   console.log(e)
+//   if (e.target.className === "edit") {
+//     // debugger
+//     const clickedDocId = e.target.dataset.id
+//     console.log(clickedDocId)
+// /////////populating the form with the clicked doc info///////
+//     fetch(`http://localhost:3000/api/v1/docs/${clickedDocId}`)
+//     .then(resp => resp.json())
+//     .then(clickedData => {
+//       createDocForm.querySelector("#new-doc-name").value = clickedData.name
+//       createDocForm.querySelector("#new-doc-pic").value = clickedData.picture
+//       createDocForm.querySelector("#new-doc-gists").value = clickedData.description
+//       createDocForm.querySelector("#new-doc-btn").innerHTML = "Edit"
+//       createDocForm.dataset.action = "edit"
+//
+// //////////// adding event listener on the form////////////
+//       createDocForm.addEventListener('submit', e => {
+//         event.preventDefault();
+//         console.log(e)
+//         ////////////// if data-action === ""create => then method "post"///////////
+//           if (e.target.dataset.action === "create")
+//             postDoc()
+//
+// ///////////// edit doc///////////////
+//           else if (e.target.dataset.action === "edit") {
+//             console.log(e)
+//             editDoc(clickedDocId)
+//
+//           }
+//         })
+//
+//     })
+//   }
+// })
+
+
+
 
 //////////add docs to dom///////////
 function loadDocs() {
@@ -26,6 +64,9 @@ function loadDocs() {
 }
 
 function addDocDivToDom(array) {
+  if (docList.childElementCount) {
+    docList.innerHTML = ""
+  }
   array.forEach(doc => {
     newDocList = addDocsDataToDiv(doc)
     newDocContainer.appendChild(newDocList)
@@ -44,6 +85,7 @@ function addDocsDataToDiv(doc) {
 
   let docEditBtn = document.createElement("button")
       docEditBtn.setAttribute("id", "edit-btn")
+      docEditBtn.setAttribute("data-id", `${doc.id}`)
       // docEditBtn.addEventListener("click", event => console.log(event))
 
   let docDeleteBtn = document.createElement("button")
@@ -119,6 +161,34 @@ function postDoc() {
 
 /////////////update doc////////////
 
+
+function editDoc(id) {
+  console.log(event)
+  // let id = event.target
+  console.log(id)
+  let docName = newNameDoc.value
+  let docUrl = newUrlDoc.value
+  let docPic = newPicDoc.value
+  let docNote = newNoteDoc.value
+  let docGists = newGistsDoc.value
+
+   fetch(`http://localhost:3000/api/v1/docs/${id}`, {
+     method:"PATCH",
+     headers: {
+       'Content-Type': 'application/json',
+       'Accept': 'application/json'
+     },
+     body: JSON.stringify({
+       name: docName,
+       site_url: docUrl,
+       picture_url: docPic,
+       note: docNote,
+       gists: docGists,
+     })
+   })
+   .then( res => res.json())
+   .then(res => loadDocs())
+}
 
 
 
